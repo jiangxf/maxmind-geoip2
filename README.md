@@ -1,2 +1,2 @@
-# maxmind-geoip2
-Simple examples using Maxmind GeoIP2
+### Maxmind GeoIP2 Examples
+* Unit tests provide examples
