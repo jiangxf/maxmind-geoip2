@@ -37,9 +37,28 @@ public class CityDatabaseTest {
         log.info("cityDatabase");
         CityDatabase cityDatabase = new CityDatabase(
                 "src/test/resources/GeoLite2-City.mmdb");
+        // Let's test Google's IP
         CityResponse cityResponse = cityDatabase.getCityResponse(
                 "173.194.207.100");
+        assertEquals("North America", cityResponse.getContinent().getName());
+        log.debug(cityResponse.getContinent().getName());
         assertEquals("United States", cityResponse.getCountry().getName());
         log.debug(cityResponse.getCountry().getName());
+        assertEquals("Colorado", cityResponse.getMostSpecificSubdivision().
+                getName());
+        log.debug(cityResponse.getMostSpecificSubdivision().getName());
+        assertEquals("Colorado", cityResponse.getLeastSpecificSubdivision().
+                getName());
+        log.debug(cityResponse.getLeastSpecificSubdivision().getName());
+        assertEquals("Boulder", cityResponse.getCity().getName());
+        log.debug(cityResponse.getCity().getName());
+        assertEquals("America/Denver", cityResponse.getLocation().getTimeZone());
+        log.debug(cityResponse.getLocation().getTimeZone());
+        assertEquals("40.0481", cityResponse.getLocation().getLatitude().
+                toString());
+        log.debug(cityResponse.getLocation().getLatitude().toString());
+        assertEquals("-105.3842", cityResponse.getLocation().getLongitude().
+                toString());
+        log.debug(cityResponse.getLocation().getLongitude().toString());
     }
 }

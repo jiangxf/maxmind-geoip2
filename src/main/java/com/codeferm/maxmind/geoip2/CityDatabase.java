@@ -51,6 +51,7 @@ public class CityDatabase {
      * Default constructor.
      */
     public CityDatabase(final String fileName) throws IOException {
+        log.debug(String.format("Opening city database %s", fileName));
         this.fileName = fileName;
         // Use built in caching implementation
         databaseReader = new DatabaseReader.Builder(new File(fileName)).
@@ -59,6 +60,7 @@ public class CityDatabase {
 
     public final CityResponse getCityResponse(final String ipAddr) throws
             IOException, GeoIp2Exception {
+        log.debug(String.format("City response for %s", ipAddr));
         final InetAddress inetAddress = InetAddress.getByName("ipAddr");
         return databaseReader.city(inetAddress);
     }
